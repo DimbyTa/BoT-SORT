@@ -5,8 +5,11 @@ import torch
 import torch.nn.functional as F
 # from torch.backends import cudnn
 
-from fast_reid.fastreid.config import get_cfg
-from fast_reid.fastreid.modeling.meta_arch import build_model
+#from fast_reid.fastreid.config import get_cfg
+from TransReID.config import cfg
+#from fast_reid.fastreid.modeling.meta_arch import build_model
+from TransReID.model import make_model
+from TransReID.datasets import make_dataloader
 from fast_reid.fastreid.utils.checkpoint import Checkpointer
 from fast_reid.fastreid.engine import DefaultTrainer, default_argument_parser, default_setup, launch
 
@@ -15,7 +18,7 @@ from fast_reid.fastreid.engine import DefaultTrainer, default_argument_parser, d
 
 def setup_cfg(config_file, opts):
     # load config from file and command-line arguments
-    cfg = get_cfg()
+    cfg = cfg
     cfg.merge_from_file(config_file)
     cfg.merge_from_list(opts)
     cfg.MODEL.BACKBONE.PRETRAIN = False
@@ -61,7 +64,9 @@ class FastReIDInterface:
 
         self.cfg = setup_cfg(config_file, ['MODEL.WEIGHTS', weights_path])
 
-        self.model = build_model(self.cfg)
+        #self.model = build_model(self.cfg)
+        train_loader, train_loader_normal, val_loader, num_query, num_classes, camera_num, view_num = make_dataloader(self.cfg)
+        self.model = make_model(cfg, num_class=num_classes, camera_num=camera_num, view_num = view_num)
         self.model.eval()
 
         Checkpointer(self.model).load(weights_path)
