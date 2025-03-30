@@ -18,7 +18,7 @@ from fast_reid.fastreid.engine import DefaultTrainer, default_argument_parser, d
 
 def setup_cfg(config_file, opts):
     # load config from file and command-line arguments
-    cfg = cfg
+    cfg = cfg()
     cfg.merge_from_file(config_file)
     cfg.merge_from_list(opts)
     cfg.MODEL.BACKBONE.PRETRAIN = False
