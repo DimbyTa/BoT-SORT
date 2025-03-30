@@ -6,7 +6,7 @@ import torch.nn.functional as F
 # from torch.backends import cudnn
 
 #from fast_reid.fastreid.config import get_cfg
-from TransReID.config import cfg
+from TransReID.config import cfg as get_cfg
 #from fast_reid.fastreid.modeling.meta_arch import build_model
 from TransReID.model import make_model
 from TransReID.datasets import make_dataloader
