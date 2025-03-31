@@ -6,7 +6,8 @@ import torch.nn.functional as F
 # from torch.backends import cudnn
 
 #from fast_reid.fastreid.config import get_cfg
-from TransReID.config import cfg as get_cfg
+from TransReID.config import cfg 
+import copy
 #from fast_reid.fastreid.modeling.meta_arch import build_model
 from TransReID.model import make_model
 from TransReID.datasets import make_dataloader
@@ -18,7 +19,7 @@ from fast_reid.fastreid.engine import DefaultTrainer, default_argument_parser, d
 
 def setup_cfg(config_file, opts):
     # load config from file and command-line arguments
-    cfgN = get_cfg
+    cfgN = copy.deepcopy(cfg)
     cfgN.merge_from_file(config_file)
     cfgN.merge_from_list(opts)
     cfgN.MODEL.BACKBONE.PRETRAIN = False
