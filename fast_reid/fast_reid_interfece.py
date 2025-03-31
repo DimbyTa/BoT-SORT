@@ -23,7 +23,7 @@ def setup_cfg(config_file, opts):
     cfgN = copy.deepcopy(cfg)
     cfgN.merge_from_file(config_file)
     cfgN.merge_from_list(opts)
-    cfgN.MODEL.BACKBONE.PRETRAIN = False
+    #cfgN.MODEL.BACKBONE.PRETRAIN = False
 
     cfgN.freeze()
 
