@@ -64,7 +64,8 @@ class FastReIDInterface:
 
         self.batch_size = batch_size
 
-        self.cfg = setup_cfg(config_file, ['MODEL.WEIGHTS', weights_path])
+        #self.cfg = setup_cfg(config_file, ['MODEL.WEIGHTS', weights_path])
+        self.cfg = setup_cfg(config_file, ['TEST.WEIGHT', weights_path])
 
         #self.model = build_model(self.cfg)
         train_loader, train_loader_normal, val_loader, num_query, num_classes, camera_num, view_num = make_dataloader(self.cfg)
