@@ -23,6 +23,7 @@ def setup_cfg(config_file, opts):
     cfgN.merge_from_file(config_file)
     cfgN.merge_from_list(opts)
     #cfgN.MODEL.BACKBONE.PRETRAIN = False
+    print("Config loaded with success")
 
     cfgN.freeze()
 
