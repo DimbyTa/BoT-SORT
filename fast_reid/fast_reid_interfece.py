@@ -69,7 +69,7 @@ class FastReIDInterface:
 
         #self.model = build_model(self.cfg)
         train_loader, train_loader_normal, val_loader, num_query, num_classes, camera_num, view_num = make_dataloader(self.cfg)
-        self.model = make_model(cfg, num_class=num_classes, camera_num=camera_num, view_num = view_num)
+        self.model = make_model(self.cfg, num_class=num_classes, camera_num=camera_num, view_num = view_num)
         self.model.eval()
 
         Checkpointer(self.model).load(weights_path)
