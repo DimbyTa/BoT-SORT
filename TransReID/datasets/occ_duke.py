@@ -33,7 +33,8 @@ class OCC_DukeMTMCreID(BaseImageDataset):
     def __init__(self, root='', verbose=True, pid_begin=0, **kwargs):
         super(OCC_DukeMTMCreID, self).__init__()
         self.dataset_dir = osp.join(root, self.dataset_dir)
-        self.dataset_url = 'http://vision.cs.duke.edu/DukeMTMC/data/misc/DukeMTMC-reID.zip'
+        #self.dataset_url = 'http://vision.cs.duke.edu/DukeMTMC/data/misc/DukeMTMC-reID.zip'
+        self.dataset_url = 'https://www.kaggle.com/api/v1/datasets/download/whurobin/dukemtmcreid'
         self.train_dir = osp.join(self.dataset_dir, 'bounding_box_train')
         self.query_dir = osp.join(self.dataset_dir, 'query')
         self.gallery_dir = osp.join(self.dataset_dir, 'bounding_box_test')
